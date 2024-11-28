@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email de Campanha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px 0;
+        }
+        .content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .countdown {
+            font-size: 2rem;
+            color: #0078d7;
+            margin: 20px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .footer {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bem-vindo à Formação!</h1>
+    </div>
+    <div class="content">
+        <h2>Prepare-se para iniciar uma nova jornada</h2>
+        <p>Aprenda a criar emails impactantes como este! A contagem regressiva abaixo marca o início da nossa formação:</p>
+        <div class="countdown" id="countdown">
+            --:--:--
+        </div>
+        <a href="https://linkformacao.com" class="cta-button">Confirme sua Participação</a>
+    </div>
+    <div class="footer">
+        <p>Precisa de ajuda? <a href="mailto:suporte@empresa.com">Entre em contato</a></p>
+    </div>
+
+    <script>
+        // JavaScript para a contagem regressiva
+        const countdownElement = document.getElementById('countdown');
+        const targetDate = new Date("2024-12-01T09:00:00"); // Data e hora do início
+
+        function updateCountdown() {
+            const now = new Date();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                countdownElement.textContent = "Começamos!";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((difference / (1000 * 60)) % 60);
+            const seconds = Math.floor((difference / 1000) % 60);
+
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
